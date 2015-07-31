@@ -55,7 +55,9 @@ Oпции:
 Oпции:
 
 :block_orientation - 	0 - вертикальный блок, 1 - горизонтальный блок (по умолчанию)
+
 :block_no_css 	   - 	true / false, не выводить CSS
+
 :block_width	   -	ширина блока (параметр width в CSS)
 
 
