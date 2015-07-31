@@ -1,8 +1,7 @@
 require "sape-rails/version"
-require "sape-rails/helpers"
 require "sape-rails/sape"
-require "sape-rails/railtie"
-
-module Sape
-end
-
+require "sape-rails/php_serialize"
+if defined?(Rails)
+  require "sape-rails/helpers"
+  require "sape-rails/railtie"
+end 

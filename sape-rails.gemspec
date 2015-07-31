@@ -6,8 +6,8 @@ require 'sape-rails/version'
 Gem::Specification.new do |gem|
   gem.name          = "sape-rails"
   gem.version       = Sape::VERSION
-  gem.authors       = ["'hazg'"]
-  gem.email         = ["'hazg@mail.ru'"]
+  gem.authors       = ["Boris Chernov"]
+  gem.email         = ["boris@imode.lv"]
   gem.description   = %q{Display sape.ru links}
   gem.summary       = %q{}
   gem.homepage      = ""

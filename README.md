@@ -1,45 +1,70 @@
 # sape-rails
 
-Вывод ссылок сапы в rails приложениях.
+Вывод ссылок sape.ru в Rails-приложениях. 
+Поддерживается вывод ссылок в формате блоков и вывод счетчика SAPE.
+
+По мотивам https://github.com/hazg/sape-rails.
+Внимание: формат файла links.db не совместим с hazg/sape-rails. 
 
 
 ## Установка
 
-Add this line to your application's Gemfile:
+Добавляем в Gemfile:
 
-    gem 'sape-rails', :git => 'git://github.com/hazg/sape-rails'
+    gem 'sape-rails', :git => 'git://github.com/borischernov/sape-rails'
 
-And then execute:
+Запускаем:
 
     $ bundle
 
 ## Использование
   
 Добавляем config/sape.yml, в котором
+
 ```yml
-user_id: номер в сапе
+user_id: xxxxxxxxxxxxxxxxxxxxxxxxxxxx         # номер в SAPE
+filename: /rails_app_root/tmp/links.db        # опционально, путь до links.db
+timeout: 3600								  # опционально, период обновления links.db, в секундах 
+charset: UTF-8								  # опционально, кодировка
+show_counter_separately: false				  # опционально, выводить счетчик отдельно от ссылок
+force_show_code: false 						  # опционально, выводить код SAPE даже при отсутствии ссылок
 ```
 
 В шаблоне
-```erb  
-<%= sape_links(кол-во ссылок) %>
-```
-Последний вызов (или единственный), должен быть
-```erb  
-<%= sape_links() %>
-```
-## Опции
 
-config/sape.yml
-```yml
-user_id: номер в сапе
-host: Хост, где показываем ссылки
-server: Откуда берем ссылки. По умолчанию 'dispencer-01.sape.ru'
-timeout: Время между обновлениями links.db, по умолчанию: 3600
-```
-C ошибками - велкам в issues
+Ссылки в обычном формате:
 
-Оригинал: http://forum.searchengines.ru/showthread.php?t=237277
+```erb  
+<%= return_sape_links(кол-во ссылок, опции) %>  
+```
+Оба параметра не обязательны.
+
+Oпции:
+
+:as_block - true / false, показывать ссылки в формате блока
+
+
+Ссылки в формате блоков:
+
+```erb  
+<%= return_sape_block_links(кол-во ссылок, опции) %>  
+```
+
+Оба параметра не обязательны.
+
+Oпции:
+
+:block_orientation - 	0 - вертикальный блок, 1 - горизонтальный блок (по умолчанию)
+:block_no_css 	   - 	true / false, не выводить CSS
+:block_width	   -	ширина блока (параметр width в CSS)
+
+
+Вывод счетчика (если в конфиге show_counter_separately: true):
+```erb  
+<%= return_sape_counter %>  
+```
+
+
 
 ## Contributing
 
@@ -48,7 +73,4 @@ C ошибками - велкам в issues
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hazg/sape-rails/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 

@@ -8,12 +8,8 @@ module Sape
 
     def load_config
       @config = YAML.load_file(Rails.root.join('config/sape.yml')).symbolize_keys
+      @config[:filename] ||= Rails.root.join('tmp/links.db')
     end
     
-
-    #def config( val )
-    #  @config[val.to_s]
-    #end
-
   end
 end
